@@ -255,7 +255,6 @@ function resetForm(){
 
     const inputs=[
         "transcription",
-        "translation",
     ];
 
     inputs.forEach(id=>{
@@ -265,12 +264,8 @@ function resetForm(){
 
     const selects=[
         "gender",
-        "age",
-        "native",
         "speech_type",
-        "domain",
-        "audio_quality",
-        "audio_format"
+        "domain"
     ];
 
     selects.forEach(id=>{
@@ -316,14 +311,9 @@ async function saveRecording(){
 
             audio:audioData,
             transcription:document.getElementById("transcription").value,
-            translation:document.getElementById("translation").value,
             gender:document.getElementById("gender").value,
-            age:document.getElementById("age").value,
-            native:document.getElementById("native").value,
             speech_type:document.getElementById("speech_type").value,
             domain:document.getElementById("domain").value,
-            audio_quality:document.getElementById("audio_quality").value,
-            audio_format:document.getElementById("audio_format").value,
             contributor:document.getElementById("contributor").value,
             session_id:sessionID,
             recording_number:recordingCount
@@ -370,7 +360,6 @@ function startNewSession(){
 
         const inputs=[
             "transcription",
-            "translation",
         ];
 
         inputs.forEach(id=>{
@@ -380,12 +369,8 @@ function startNewSession(){
 
         const selects=[
             "gender",
-            "age",
-            "native",
             "speech_type",
-            "domain",
-            "audio_quality",
-            "audio_format"
+            "domain"
         ];
 
         selects.forEach(id=>{

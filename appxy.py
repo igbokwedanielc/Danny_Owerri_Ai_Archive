@@ -55,17 +55,12 @@ def background_upload(upload_id, filepath, data):
             append_to_sheet([
                 drive_link,
                 data.get("transcription"),
-                data.get("translation"),
                 data.get("gender"),
-                data.get("age"),
-                data.get("native"),
                 data.get("speech_type"),
                 data.get("domain"),
                 data.get("contributor"),
                 data.get("session_id"),
-                data.get("recording_number"),
-                data.get("audio_quality"),
-                data.get("audio_format")
+                data.get("recording_number")
             ])
             upload_status[upload_id] = "success"
             print(f"✅ Uploaded: {drive_link}")

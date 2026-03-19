@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+.venv/
+recordings/
+data/
+token.json
+client_secret.json
+upload_errors.log

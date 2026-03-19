@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>DanIgboks – Owerri Voice Archive</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<script src="https://unpkg.com/wavesurfer.js"></script>
+
+</head>
+
+
+<body>
+
+<h1>DanIgboks</h1>
+
+<h3>Owerri Voice Archive · AI Training Dataset</h3>
+
+
+<div class="guide">
+
+<b>DSN Recording Best Practices</b>
+
+<ul>
+<li>Choose a quiet room with soft furnishings</li>
+<li>Close doors and windows</li>
+<li>Stay 6 inches from microphone</li>
+<li>Avoid fans, traffic, and background voices</li>
+<li>Capture 3–5 takes if possible</li>
+</ul>
+
+Audio is stored as <b>WAV · 16kHz · Lossless</b>
+
+</div>
+
+
+<hr>
+
+
+<h2>Language & Dialect</h2>
+
+<p>🇳🇬 Igbo (Owerri)</p>
+
+
+<hr>
+
+
+<h2>Recording Session</h2>
+
+<p><b>Session ID:</b> <span id="sessionID"></span></p>
+
+<p><b>Total Session Duration:</b> <span id="sessionDuration">00:00</span></p>
+
+<h3 id="recordingCounter">Recording #1</h3>
+
+
+<hr>
+
+
+<h2>Audio Input</h2>
+
+<button onclick="startRecording()">Tap to Record</button>
+
+<button onclick="stopRecording()">Stop</button>
+
+<div>
+
+Recording Timer: <b><span id="recordingTimer">00:00</span></b>
+
+</div>
+
+
+<br>
+
+
+<canvas id="waveform"></canvas>
+
+
+<br>
+
+
+<div id="dropZone" class="drop-zone">
+
+<b>Drop audio file here</b>
+
+<br>
+
+WAV preferred · MP3, M4A, OGG accepted · Max 50MB
+
+</div>
+
+
+<input type="file" id="uploadAudio">
+
+
+<br><br>
+
+
+<audio id="playbackAudio" controls></audio>
+
+
+<hr>
+
+
+<h2>Text Translation</h2>
+
+<h4>Voice Transcription (Owerri)</h4>
+
+<textarea
+id="transcription"
+placeholder="Type the spoken text transcription in Owerri..."
+></textarea>
+
+<p id="transcriptionCount">0 characters</p>
+
+
+<h4>English Translation (Optional)</h4>
+
+<textarea
+id="translation"
+placeholder="Type the English translation here..."
+></textarea>
+
+<p id="translationCount">0 characters</p>
+
+
+<hr>
+
+
+<h2>Recording Metadata</h2>
+
+
+<label>Speaker Gender</label>
+
+<select id="gender">
+
+<option value="">— Select —</option>
+
+<option>Male</option>
+
+<option>Female</option>
+
+<option>Other</option>
+
+</select>
+
+
+<br><br>
+
+
+<label>Age Range</label>
+
+<select id="age">
+
+<option value="">— Select —</option>
+
+<option>Under 18</option>
+
+<option>18–25</option>
+
+<option>26–40</option>
+
+<option>41–60</option>
+
+<option>60+</option>
+
+</select>
+
+
+<br><br>
+
+
+<label>Native Speaker</label>
+
+<select id="native">
+
+<option value="">— Select —</option>
+
+<option>Yes</option>
+
+<option>No</option>
+
+</select>
+
+
+<br><br>
+
+
+<label>Speech Type</label>
+
+<select id="speech_type">
+
+<option value="">— Select —</option>
+
+<option>Spontaneous Speech</option>
+
+<option>Read Speech</option>
+
+</select>
+
+
+<br><br>
+
+
+<label>Domain / Topic</label>
+
+<select id="domain">
+
+<option value="">— Select —</option>
+
+<option>Personal Identity and Biography</option>
+
+<option>Family and Social Relationships</option>
+
+<option>Daily Life and Routine</option>
+
+<option>Food and Cooking</option>
+
+<option>Market and Commerce</option>
+
+<option>Education and Learning</option>
+
+<option>Work and Occupation</option>
+
+<option>Culture and Traditions</option>
+
+<option>Religion and Spiritual Life</option>
+
+<option>Health and Well-Being</option>
+
+<option>Transportation and Travel</option>
+
+<option>Technology and Communication</option>
+
+<option>Agriculture and Farming</option>
+
+<option>Environment and Nature</option>
+
+<option>Stories and Folktales</option>
+
+<option>Proverbs and Idioms</option>
+
+<option>Emotions and Opinions</option>
+
+<option>Community and Society</option>
+
+<option>Entertainment and Leisure</option>
+
+<option>Finance and Money</option>
+
+</select>
+
+
+<br><br>
+
+
+<label>Audio Quality</label>
+
+<select id="audio_quality">
+
+<option>Studio / Clean</option>
+
+<option>Normal Environment</option>
+
+<option>Background Noise</option>
+
+</select>
+
+
+<br><br>
+
+
+<label>Audio Format</label>
+
+<select id="audio_format">
+
+<option>WAV (Recommended)</option>
+
+<option>MP3</option>
+
+<option>M4A</option>
+
+<option>OGG</option>
+
+</select>
+
+
+<br><br>
+
+
+<label>Contributor Name (Optional)</label>
+
+<input id="contributor" value="Anonymous">
+
+
+<br><br>
+
+
+<button onclick="saveRecording()">Save to Archive</button>
+
+<button onclick="startNewSession()">Reset / Start New Session</button>
+
+<hr>
+
+
+<h2>Collected Recordings</h2>
+
+<h3>Export Package</h3>
+
+<button onclick="window.location='/export/csv'">
+
+Export CSV
+
+</button>
+
+<button onclick="window.location='/export/json'">
+
+Export JSON
+
+</button>
+
+<button onclick="window.location='/export/excel'">
+
+Export Excel
+
+</button>
+
+
+<p>No recordings yet. Start contributing voice data above.</p>
+
+
+<hr>
+
+
+<script src="/static/js/waveformxy.js"></script>
+
+<script src="/static/js/recorderxy.js"></script>
+
+<script src="/static/js/uploadxy.js"></script>
+
+
+</body>
+
+</html>

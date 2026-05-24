@@ -1,5 +1,4 @@
-﻿# Danny_Owerri_Ai_Archive
-# Owerri Voice Archive: AI Training Dataset Collector
+﻿# Danny_Owerri_Ai_Archive: AI Training Dataset Collector
 
 🎙️ **Preserving and structuralizing the Owerri dialect of the Igbo language for next-generation speech AI models.**
 
